@@ -1,6 +1,12 @@
 import React from "react";
 
-import { View, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -13,11 +19,17 @@ import Animated, {
 
 import { Card, Container } from "./styles";
 
+type SkeletonProps = {
+  width: number;
+  height: number;
+  style: StyleProp<ViewStyle>;
+};
+
 const Skeleton: React.FC = () => {
   const cardWidth = Dimensions.get("window").width * 0.8;
   const skeWidth = cardWidth - 32;
 
-  const SkeletonComponent = ({ width, height, style }: any) => {
+  const SkeletonComponent = ({ width, height, style }: SkeletonProps) => {
     const translateX = useSharedValue(-width);
 
     translateX.value = withRepeat(
