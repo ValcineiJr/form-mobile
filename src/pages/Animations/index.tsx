@@ -8,6 +8,14 @@ import { ButtonTag } from "../../components/ButtonTag";
 import { styles } from "./styles";
 import { Tags } from "../../components/Tags";
 
+import {
+  MenuProvider,
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from "react-native-popup-menu";
+
 const Animations: React.FC = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [newTag, setNewTag] = useState("");
@@ -22,20 +30,22 @@ const Animations: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.form}>
-        <InputTag
-          placeholder="Nova tag"
-          onChangeText={setNewTag}
-          value={newTag}
-        />
-        <ButtonTag onPress={handleAddTag} />
+    <MenuProvider>
+      <View style={styles.container}>
+        <View style={styles.form}>
+          <InputTag
+            placeholder="Nova tag"
+            onChangeText={setNewTag}
+            value={newTag}
+          />
+          <ButtonTag onPress={handleAddTag} />
+        </View>
+
+        <Text style={styles.title}>Tags</Text>
+
+        <Tags data={tags} onRemove={handleRemoveTag} />
       </View>
-
-      <Text style={styles.title}>Tags</Text>
-
-      <Tags data={tags} onRemove={handleRemoveTag} />
-    </View>
+    </MenuProvider>
   );
 };
 
