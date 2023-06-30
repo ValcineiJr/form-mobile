@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, useController } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 
 import { Container } from "./styles";
 import Title from "../Title";
@@ -7,8 +7,11 @@ import Input from "../Input";
 import WhiteContainer from "../WhiteContainer";
 import { KeyboardAvoidingView } from "react-native";
 
-const StepThree: React.FC = () => {
-  const { control, handleSubmit } = useForm();
+interface Props {
+  control: Control<FieldValues>;
+}
+
+const StepThree = ({ control }: Props) => {
   return (
     <Container>
       <KeyboardAvoidingView behavior="position" enabled>

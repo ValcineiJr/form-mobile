@@ -7,6 +7,7 @@ import {
 
 import { StatusBar } from "expo-status-bar";
 
+import { useForm } from "react-hook-form";
 import { useFonts } from "expo-font";
 import { ProgressBar, MD3Colors, Button } from "react-native-paper";
 
@@ -38,6 +39,8 @@ import theme from "./src/styles/theme";
 const AnimatedInputText = Animated.createAnimatedComponent(Input);
 
 export default function App() {
+  const { handleSubmit, control } = useForm();
+
   const animatedPadding = useSharedValue(0);
   const animatedWidth = useSharedValue(0);
   const animatedHeight = useSharedValue(0);
@@ -89,7 +92,7 @@ export default function App() {
   const RenderSteps = () => {
     if (step === 1) return <StepOne />;
     if (step === 2) return <StepTwo />;
-    if (step === 3) return <StepThree />;
+    if (step === 3) return <StepThree control={control} />;
   };
 
   const StepsIndicator = () => {
@@ -116,13 +119,17 @@ export default function App() {
           contentStyle={{ flexDirection: "row-reverse" }}
           icon="arrow-right"
           mode="contained"
-          onPress={StepFoward}
+          onPress={step < maxSteps ? StepFoward : handleSubmit(onSubmit)}
           buttonColor="#258AFF"
         >
           {step < maxSteps ? "Avançar" : "Enviar"}
         </Button>
       </ButtonGroup>
     );
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
   };
 
   return (
