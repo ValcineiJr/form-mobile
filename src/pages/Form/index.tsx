@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components";
 import { StatusBar } from "expo-status-bar";
 
 import { useForm } from "react-hook-form";
-import { useFonts } from "expo-font";
 
 import { Button } from "react-native-paper";
 
@@ -28,14 +27,6 @@ export default function Form() {
   const { handleSubmit, control } = useForm();
 
   const [step, setStep] = useState(1);
-
-  const [fontsLoaded] = useFonts({
-    Poppins: require("../../../assets/fonts/Poppins-Medium.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const maxSteps = 3;
 
