@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignUp from "./pages/SignUp";
 import Initial from "./pages/Initial";
 import OTP from "./pages/OTP";
+import Password from "./pages/Password";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ function OVO() {
       <Stack.Screen name="Initial" component={Initial} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="OTP" component={OTP} />
+      <Stack.Screen name="Password" component={Password} />
     </Stack.Navigator>
   );
 }

@@ -3,18 +3,16 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { LinearGradient } from "expo-linear-gradient";
-
 import { StatusBar } from "expo-status-bar";
 
 import Header from "@pages/OVO/components/Header";
+import SquareButton from "@pages/OVO/components/SquareButton";
+import InputIcon from "@components/InputIcon";
 import NavigationHeader from "@pages/OVO/components/NavigationHeader";
 
-import { Container, Content, Body, Inputs, OTPInput } from "./styles";
-import H1 from "@pages/OVO/components/H1";
-import SquareButton from "@pages/OVO/components/SquareButton";
-import Observation from "@pages/OVO/components/Observation";
+import { Container, Content } from "./styles";
 
-const OTP: React.FC = () => {
+const Password: React.FC = () => {
   const { setOptions, goBack, navigate }: any = useNavigation();
 
   setOptions({
@@ -34,24 +32,28 @@ const OTP: React.FC = () => {
 
       <Content>
         <Header
-          source={require("@assets/lottie/otp.json")}
-          h1="Verificação OTP"
-          h2="Um código de autenticação foi enviado para +62 877*****36"
+          source={require("@assets/lottie/password.json")}
+          h1="Definir senha"
+          h2="Criar uma senha para sua conta"
         />
-        <Body>
-          <H1 text="Digite OTP" />
-          <Inputs>
-            <OTPInput maxLength={1} />
-            <OTPInput maxLength={1} />
-            <OTPInput maxLength={1} />
-            <OTPInput maxLength={1} />
-          </Inputs>
-          <SquareButton
-            onPress={() => navigateTo("Password")}
-            text="Verificar"
-          />
-          <Observation text="Reenviar OTP em" colorText="18 Segundos" />
-        </Body>
+
+        <InputIcon
+          icon="eye"
+          label="Digite sua senha"
+          iconColor="#40128b"
+          inputColor="#1d1d1d"
+          styleContent={{ marginTop: 34, marginBottom: 25 }}
+        />
+        <InputIcon
+          icon="mobile-phone"
+          label="Confirme sua senha"
+          iconColor="#40128b"
+          inputColor="#1d1d1d"
+          iconSize={45}
+          styleContent={{ marginBottom: 25 }}
+        />
+
+        <SquareButton onPress={() => navigateTo("Initial")} text="Confirmar" />
       </Content>
       <LinearGradient
         start={{ x: 0, y: 0 }}
@@ -70,4 +72,4 @@ const OTP: React.FC = () => {
   );
 };
 
-export default OTP;
+export default Password;

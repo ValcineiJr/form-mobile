@@ -59,7 +59,7 @@ const SignUp: React.FC = () => {
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={{
-          height: 363,
+          height: 250,
           width: "100%",
           position: "absolute",
           bottom: 0,
